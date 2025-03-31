@@ -66,14 +66,52 @@ public class GestionHorasMedicas {
     }
 
     private static void modificarCita() {
-        
+        listarCitas();
+        System.out.print("Seleccione el número de la cita a modificar: ");
+        int indice = scanner.nextInt() - 1;
+        scanner.nextLine();
+
+        if (indice >= 0 && indice < citas.size()) {
+            CitaMedica cita = citas.get(indice);
+            System.out.print("Ingrese nueva fecha (dd-mm-aaaa): ");
+            cita.setFecha(scanner.nextLine());
+            System.out.print("Ingrese nueva hora (hh:mm): ");
+            cita.setHora(scanner.nextLine());
+            System.out.print("Ingrese nuevo motivo: ");
+            cita.setMotivo(scanner.nextLine());
+            System.out.println("Cita médica modificada con éxito.");
+        } else {
+            System.out.println("Índice no válido");
+        }
     }
 
     private static void eliminarCita() {
-        
+        listarCitas();
+        System.out.print("Seleccione el número de la cita a eliminar: ");
+        int indice = scanner.nextInt() - 1;
+
+        if (indice >= 0 && indice < citas.size()) {
+            citas.remove(indice);
+            System.out.println("Cita médica eliminada con éxito");
+        } else {
+            System.out.println("Índice no válido");
+        }
     }
 
     private static void listarCitas() {
-        
+        if (citas.isEmpty()) {
+            System.out.println("No hay citas registradas");
+        } else {
+            for (int i = 0; i < citas.size(); i++) {
+                CitaMedica cita = citas.get(i);
+                System.out.printf("%d. %s | %s | %s | %s | %s\n",
+                        i + 1,
+                        cita.getPaciente().getNombre(),
+                        cita.getMedico().getNombre(),
+                        cita.getFecha(),
+                        cita.getHora(),
+                        cita.getMotivo());
+            }
+        }
     }
 }
