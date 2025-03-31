@@ -25,10 +25,10 @@ public class GestionHorasMedicas {
                     System.out.println("5. Salir");
                     System.out.print("Seleccione una opción: ");
                     
-                    opcion = Integer.parseInt(scanner.nextLine()); // Validación de tipo
+                    opcion = Integer.parseInt(scanner.nextLine()); 
                     
                     if (opcion >= 1 && opcion <= 5) {
-                        entradaValida = true; // Solo acepta opciones válidas
+                        entradaValida = true; 
                     } else {
                         System.out.println("Opción fuera de rango. Intente de nuevo");
                     }
